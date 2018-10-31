@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.utils;
+package pl.karolmichalski.githubsearchv2.presentation.utils;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;

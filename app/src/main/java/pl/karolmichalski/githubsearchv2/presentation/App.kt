@@ -1,9 +1,9 @@
-package pl.karolmichalski.githubrepos.presentation
+package pl.karolmichalski.githubsearchv2.presentation
 
 import android.app.Application
-import pl.karolmichalski.githubrepos.di.AppComponent
-import pl.karolmichalski.githubrepos.di.DaggerAppComponent
-import pl.karolmichalski.githubrepos.di.ReposModule
+import pl.karolmichalski.githubsearchv2.di.AppComponent
+import pl.karolmichalski.githubsearchv2.di.DaggerAppComponent
+import pl.karolmichalski.githubsearchv2.di.ReposModule
 
 class App : Application() {
 

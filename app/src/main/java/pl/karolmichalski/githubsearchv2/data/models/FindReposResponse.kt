@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.data.models
+package pl.karolmichalski.githubsearchv2.data.models
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

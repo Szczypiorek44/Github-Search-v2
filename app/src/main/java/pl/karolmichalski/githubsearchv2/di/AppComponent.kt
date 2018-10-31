@@ -1,8 +1,8 @@
-package pl.karolmichalski.githubrepos.di
+package pl.karolmichalski.githubsearchv2.di
 
 import dagger.Component
-import pl.karolmichalski.githubrepos.presentation.screens.details.DetailsViewModel
-import pl.karolmichalski.githubrepos.presentation.screens.repos.ReposViewModel
+import pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsViewModel
+import pl.karolmichalski.githubsearchv2.presentation.screens.repos.ReposViewModel
 import javax.inject.Singleton
 
 @Singleton

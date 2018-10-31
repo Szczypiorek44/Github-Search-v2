@@ -9,11 +9,11 @@
 
         <variable
             name="viewModel"
-            type="pl.karolmichalski.githubrepos.presentation.screens.repos.ReposViewModel" />
+            type="pl.karolmichalski.githubsearchv2.presentation.screens.repos.ReposViewModel" />
 
         <variable
             name="listener"
-            type="pl.karolmichalski.githubrepos.presentation.screens.repos.ReposListener" />
+            type="pl.karolmichalski.githubsearchv2.presentation.screens.repos.ReposListener" />
 
     </data>
 
@@ -63,7 +63,7 @@
             app:repoList="@{viewModel.repoList}"
             tools:listitem="@layout/item_repo" />
 
-        <pl.karolmichalski.githubrepos.presentation.customviews.LoadingLayout
+        <pl.karolmichalski.githubsearchv2.presentation.customviews.LoadingLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />

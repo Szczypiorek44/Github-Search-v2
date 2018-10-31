@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GithubRepos</string>
+    <string name="app_name">GithubSearchv2</string>
     <string name="enter_keywords">Enter keywords</string>
     <string name="search">Search</string>
     <string name="choose_what_you_want_to_do">Choose what you want to do</string>

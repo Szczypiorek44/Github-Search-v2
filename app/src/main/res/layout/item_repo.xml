@@ -11,7 +11,7 @@
 
         <variable
             name="repo"
-            type="pl.karolmichalski.githubrepos.data.models.Repo" />
+            type="pl.karolmichalski.githubsearchv2.data.models.Repo" />
 
         <variable
             name="listener"

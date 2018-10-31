@@ -1,8 +1,8 @@
-package pl.karolmichalski.githubrepos.domain.interactors
+package pl.karolmichalski.githubsearchv2.domain.interactors
 
 import io.reactivex.Single
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.domain.repositories.GithubRepos
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.domain.repositories.GithubRepos
 import javax.inject.Inject
 
 class RepoListUseCase @Inject constructor(private val githubRepos: GithubRepos) {

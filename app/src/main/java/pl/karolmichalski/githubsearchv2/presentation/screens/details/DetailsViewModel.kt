@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.screens.details
+package pl.karolmichalski.githubsearchv2.presentation.screens.details
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.domain.interactors.RepoDetailsUseCase
-import pl.karolmichalski.githubrepos.presentation.App
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.domain.interactors.RepoDetailsUseCase
+import pl.karolmichalski.githubsearchv2.presentation.App
 import javax.inject.Inject
 
 class DetailsViewModel(app: App) : ViewModel() {
@@ -29,7 +29,6 @@ class DetailsViewModel(app: App) : ViewModel() {
 	lateinit var repoDetailsUseCase: RepoDetailsUseCase
 
 	init {
-		System.loadLibrary("native-lib")
 		app.appComponent.inject(this)
 	}
 
@@ -44,7 +43,5 @@ class DetailsViewModel(app: App) : ViewModel() {
 						onError = { errorMessage.value = it.localizedMessage }
 				)
 	}
-
-	external fun getMagic(repo: Repo?): Int
 
 }

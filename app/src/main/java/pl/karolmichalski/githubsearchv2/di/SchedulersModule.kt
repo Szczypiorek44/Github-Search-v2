@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.di
+package pl.karolmichalski.githubsearchv2.di
 
 import dagger.Module
 import dagger.Provides

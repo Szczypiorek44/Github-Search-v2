@@ -1,9 +1,9 @@
-package pl.karolmichalski.githubrepos.presentation.screens.repos.viewholders
+package pl.karolmichalski.githubsearchv2.presentation.screens.repos.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.databinding.ItemRepoBinding
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.databinding.ItemRepoBinding
 
 class RepoViewHolder(private val binding: ItemRepoBinding,
 					 private val onItemClick: (Repo) -> Unit)

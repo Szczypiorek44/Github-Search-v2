@@ -1,6 +1,6 @@
-package pl.karolmichalski.githubrepos.presentation.screens.repos
+package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
-import pl.karolmichalski.githubrepos.data.models.Repo
+import pl.karolmichalski.githubsearchv2.data.models.Repo
 
 interface ReposListener {
 	fun onSearchClick()

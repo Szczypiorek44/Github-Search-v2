@@ -1,9 +1,9 @@
-package pl.karolmichalski.githubrepos.presentation.utils
+package pl.karolmichalski.githubsearchv2.presentation.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import pl.karolmichalski.githubrepos.R
+import pl.karolmichalski.githubsearchv2.R
 
 
 @BindingAdapter("imageUrl")

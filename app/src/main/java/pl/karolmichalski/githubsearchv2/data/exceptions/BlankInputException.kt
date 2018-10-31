@@ -1,3 +1,3 @@
-package pl.karolmichalski.githubrepos.data.exceptions
+package pl.karolmichalski.githubsearchv2.data.exceptions
 
 class BlankInputException(message: String) : Exception(message)

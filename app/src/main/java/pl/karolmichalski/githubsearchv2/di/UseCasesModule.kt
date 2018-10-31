@@ -1,10 +1,10 @@
-package pl.karolmichalski.githubrepos.di
+package pl.karolmichalski.githubsearchv2.di
 
 import dagger.Module
 import dagger.Provides
-import pl.karolmichalski.githubrepos.domain.interactors.RepoDetailsUseCase
-import pl.karolmichalski.githubrepos.domain.interactors.RepoListUseCase
-import pl.karolmichalski.githubrepos.domain.repositories.GithubRepos
+import pl.karolmichalski.githubsearchv2.domain.interactors.RepoDetailsUseCase
+import pl.karolmichalski.githubsearchv2.domain.interactors.RepoListUseCase
+import pl.karolmichalski.githubsearchv2.domain.repositories.GithubRepos
 
 @Module
 class UseCasesModule {

@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.screens.repos.adapters
+package pl.karolmichalski.githubsearchv2.presentation.screens.repos.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import pl.karolmichalski.githubrepos.R
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.presentation.screens.repos.viewholders.RepoViewHolder
+import pl.karolmichalski.githubsearchv2.R
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.presentation.screens.repos.viewholders.RepoViewHolder
 
 @BindingAdapter("repoList", "onItemClick")
 fun RecyclerView.setRepos(repoList: List<Repo>, onItemClick: (Repo) -> Unit) {

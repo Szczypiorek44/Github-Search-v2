@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.screens.details
+package pl.karolmichalski.githubsearchv2.presentation.screens.details
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_details.*
-import pl.karolmichalski.githubrepos.R
-import pl.karolmichalski.githubrepos.databinding.ActivityDetailsBinding
-import pl.karolmichalski.githubrepos.presentation.dialogs.DecisionDialog
-import pl.karolmichalski.githubrepos.presentation.utils.IntentDelegate
+import pl.karolmichalski.githubsearchv2.R
+import pl.karolmichalski.githubsearchv2.databinding.ActivityDetailsBinding
+import pl.karolmichalski.githubsearchv2.presentation.dialogs.DecisionDialog
+import pl.karolmichalski.githubsearchv2.presentation.utils.IntentDelegate
 
 var Intent.owner by IntentDelegate.String("owner")
 var Intent.repo by IntentDelegate.String("repo")
@@ -51,8 +51,6 @@ class DetailsActivity : AppCompatActivity() {
 			button2text = this@DetailsActivity.getString(R.string.no)
 			onButton1Click = {
 				dismiss()
-				val magic = viewModel.getMagic(viewModel.repo.value)
-				Toast.makeText(activity, this@DetailsActivity.getString(R.string.magic_number_is, magic), Toast.LENGTH_SHORT).show()
 			}
 			onButton2Click = {
 				dismiss()

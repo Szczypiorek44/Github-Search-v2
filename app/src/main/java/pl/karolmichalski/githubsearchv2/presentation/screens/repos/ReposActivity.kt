@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.screens.repos
+package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import pl.karolmichalski.githubrepos.R
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.databinding.ActivityReposBinding
-import pl.karolmichalski.githubrepos.presentation.screens.details.DetailsActivity
-import pl.karolmichalski.githubrepos.presentation.screens.details.owner
-import pl.karolmichalski.githubrepos.presentation.screens.details.repo
-import pl.karolmichalski.githubrepos.presentation.utils.BundleDelegate
-import pl.karolmichalski.githubrepos.presentation.utils.hideSoftKeyboard
+import pl.karolmichalski.githubsearchv2.R
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.databinding.ActivityReposBinding
+import pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsActivity
+import pl.karolmichalski.githubsearchv2.presentation.screens.details.owner
+import pl.karolmichalski.githubsearchv2.presentation.screens.details.repo
+import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
+import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
 
 class ReposActivity : AppCompatActivity(), ReposListener {
 

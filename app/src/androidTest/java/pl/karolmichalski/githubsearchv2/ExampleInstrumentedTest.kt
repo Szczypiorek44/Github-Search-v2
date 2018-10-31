@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos
+package pl.karolmichalski.githubsearchv2
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

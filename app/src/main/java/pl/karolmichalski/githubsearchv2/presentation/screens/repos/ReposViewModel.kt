@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.screens.repos
+package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModelProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import pl.karolmichalski.githubrepos.data.exceptions.BlankInputException
-import pl.karolmichalski.githubrepos.data.models.Repo
-import pl.karolmichalski.githubrepos.domain.interactors.RepoListUseCase
-import pl.karolmichalski.githubrepos.presentation.App
+import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
+import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.domain.interactors.RepoListUseCase
+import pl.karolmichalski.githubsearchv2.presentation.App
 import javax.inject.Inject
 
 class ReposViewModel(app: App) : AndroidViewModel(app) {

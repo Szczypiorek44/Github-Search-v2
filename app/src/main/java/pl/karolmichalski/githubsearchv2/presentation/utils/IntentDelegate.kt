@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.utils
+package pl.karolmichalski.githubsearchv2.presentation.utils
 
 import android.content.Intent
 import kotlin.properties.ReadWriteProperty

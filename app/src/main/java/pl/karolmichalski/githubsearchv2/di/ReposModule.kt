@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.di
+package pl.karolmichalski.githubsearchv2.di
 
 import android.content.Context
 import com.fasterxml.jackson.databind.DeserializationFeature
@@ -9,10 +9,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
-import pl.karolmichalski.githubrepos.BuildConfig
-import pl.karolmichalski.githubrepos.data.repos.ApiService
-import pl.karolmichalski.githubrepos.data.repos.GithubReposImpl
-import pl.karolmichalski.githubrepos.domain.repositories.GithubRepos
+import pl.karolmichalski.githubsearchv2.BuildConfig
+import pl.karolmichalski.githubsearchv2.data.repos.ApiService
+import pl.karolmichalski.githubsearchv2.data.repos.GithubReposImpl
+import pl.karolmichalski.githubsearchv2.domain.repositories.GithubRepos
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory

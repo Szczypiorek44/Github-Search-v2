@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.dialogs
+package pl.karolmichalski.githubsearchv2.presentation.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import pl.karolmichalski.githubrepos.R
-import pl.karolmichalski.githubrepos.databinding.DialogDecisionBinding
+import pl.karolmichalski.githubsearchv2.R
+import pl.karolmichalski.githubsearchv2.databinding.DialogDecisionBinding
 
 class DecisionDialog : DialogFragment() {
 

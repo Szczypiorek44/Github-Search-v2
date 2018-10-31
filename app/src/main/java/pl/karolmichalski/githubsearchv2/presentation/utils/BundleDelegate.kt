@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.utils
+package pl.karolmichalski.githubsearchv2.presentation.utils
 
 import android.os.Bundle
 import android.os.Parcelable

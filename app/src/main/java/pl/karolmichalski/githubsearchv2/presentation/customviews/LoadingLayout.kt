@@ -1,4 +1,4 @@
-package pl.karolmichalski.githubrepos.presentation.customviews
+package pl.karolmichalski.githubsearchv2.presentation.customviews
 
 import android.content.Context
 import android.graphics.Color

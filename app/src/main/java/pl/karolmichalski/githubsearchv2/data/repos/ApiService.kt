@@ -1,8 +1,8 @@
-package pl.karolmichalski.githubrepos.data.repos
+package pl.karolmichalski.githubsearchv2.data.repos
 
 import io.reactivex.Single
-import pl.karolmichalski.githubrepos.data.models.FindReposResponse
-import pl.karolmichalski.githubrepos.data.models.Repo
+import pl.karolmichalski.githubsearchv2.data.models.FindReposResponse
+import pl.karolmichalski.githubsearchv2.data.models.Repo
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

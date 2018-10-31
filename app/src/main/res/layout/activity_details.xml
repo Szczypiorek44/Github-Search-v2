@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="pl.karolmichalski.githubrepos.presentation.screens.details.DetailsViewModel" />
+            type="pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsViewModel" />
 
     </data>
 
@@ -118,7 +118,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <pl.karolmichalski.githubrepos.presentation.customviews.LoadingLayout
+            <pl.karolmichalski.githubsearchv2.presentation.customviews.LoadingLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
