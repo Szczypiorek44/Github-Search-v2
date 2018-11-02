@@ -35,8 +35,8 @@ class ReposViewModel(app: App) : AndroidViewModel(app) {
 		app.appComponent.inject(this)
 	}
 
-	fun findRepos() {
-		repoListUseCase.execute(keywords.value)
+	fun findRepos(keywords: String) {
+		repoListUseCase.execute(keywords)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.doOnSubscribe { isLoading.postValue(true) }

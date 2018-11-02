@@ -35,7 +35,7 @@
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
                 android:hint="@string/enter_keywords"
                 android:inputType="text"
-                android:onTextChanged="@{listener.onTextChanged}"
+                android:onTextChanged="@{listener.onTextChange}"
                 android:text="@={viewModel.keywords}" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -46,6 +46,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:onItemClick="@{listener.onItemClick}"
+            app:onScroll="@{listener.onScroll}"
             app:repoList="@{viewModel.repoList}"
             tools:listitem="@layout/item_repo" />
 

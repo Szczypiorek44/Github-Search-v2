@@ -2,7 +2,6 @@ package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,9 +14,9 @@ import pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsActi
 import pl.karolmichalski.githubsearchv2.presentation.screens.details.owner
 import pl.karolmichalski.githubsearchv2.presentation.screens.details.repo
 import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
+import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
 
 class ReposActivity : AppCompatActivity(), ReposListener {
-
 
 	private var Bundle.keywords by BundleDelegate.String("keywords")
 	private var Bundle.repoList by BundleDelegate.List<Repo>("repoList")
@@ -54,14 +53,9 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 		viewModel.repoList.value = savedInstanceState?.repoList
 	}
 
-	override fun onTextChanged(charSequence: CharSequence, start: Int, before: Int, count: Int) {
-		Log.d("XD", "X $charSequence")
+	override fun onTextChange(charSequence: CharSequence, start: Int, before: Int, count: Int) {
+		viewModel.findRepos(charSequence.toString())
 	}
-//
-//	override fun onSearchClick() {
-//		hideSoftKeyboard()
-//		viewModel.findRepos()
-//	}
 
 	override fun onItemClick(): (Repo) -> Unit {
 		return {
@@ -71,6 +65,10 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 			}
 			startActivity(intent)
 		}
+	}
+
+	override fun onScroll(): () -> Unit {
+		return { hideSoftKeyboard() }
 	}
 
 }
