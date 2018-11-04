@@ -11,9 +11,19 @@ import pl.karolmichalski.githubsearchv2.databinding.DialogDecisionBinding
 
 class DecisionDialog : DialogFragment() {
 
-	var title: String? = null
-	var button1text = ""
-	var button2text = ""
+	companion object {
+		fun newInstance(title: String, button1text: String, button2text: String): DecisionDialog {
+			return DecisionDialog().apply {
+				this.title = title
+				this.button1text = button1text
+				this.button2text = button2text
+			}
+		}
+	}
+
+	private var title: String? = null
+	private var button1text = ""
+	private var button2text = ""
 
 	var onButton1Click: () -> Unit = {}
 	var onButton2Click: () -> Unit = {}

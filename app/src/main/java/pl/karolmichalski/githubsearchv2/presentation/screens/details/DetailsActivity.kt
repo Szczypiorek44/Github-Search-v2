@@ -43,17 +43,18 @@ class DetailsActivity : AppCompatActivity() {
 	}
 
 	private fun showDecisionDialog() {
-		DecisionDialog().also {
-			it.title = getString(R.string.are_you_ready_for_some_magic_question)
-			it.button1text = getString(R.string.yes)
-			it.button2text = getString(R.string.no)
-			it.onButton1Click = {
-				it.dismiss()
-			}
-			it.onButton2Click = {
-				it.dismiss()
-			}
-
-		}.show(supportFragmentManager, DecisionDialog::class.java.simpleName)
+		DecisionDialog.newInstance(
+				title = getString(R.string.are_you_ready_for_some_magic_question),
+				button1text = getString(R.string.yes),
+				button2text = getString(R.string.no))
+				.apply {
+					onButton1Click = {
+						dismiss()
+					}
+					onButton2Click = {
+						dismiss()
+					}
+				}
+				.show(supportFragmentManager, DecisionDialog::class.java.simpleName)
 	}
 }
