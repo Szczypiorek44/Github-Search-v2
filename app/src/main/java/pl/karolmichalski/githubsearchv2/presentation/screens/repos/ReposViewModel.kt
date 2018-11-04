@@ -35,14 +35,15 @@ class ReposViewModel(app: App) : AndroidViewModel(app) {
 		app.appComponent.inject(this)
 	}
 
-	fun findRepos(keywords: String) {
-		repoListUseCase.execute(keywords)
+	fun findRepos() {
+		repoListUseCase.execute(keywords.value)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.doOnSubscribe { isLoading.postValue(true) }
 				.doFinally { isLoading.postValue(false) }
 				.subscribeBy(
-						onSuccess = { repoList.value = it },
+						onSuccess = {
+							repoList.value = it },
 						onError = {
 							if (it is BlankInputException)
 								repoList.value = ArrayList()

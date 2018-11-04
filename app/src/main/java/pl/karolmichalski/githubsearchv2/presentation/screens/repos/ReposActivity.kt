@@ -2,6 +2,8 @@ package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,10 +18,15 @@ import pl.karolmichalski.githubsearchv2.presentation.screens.details.repo
 import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
 import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
 
+private const val FIND_REPOS_DELAY = 500L
+
 class ReposActivity : AppCompatActivity(), ReposListener {
 
 	private var Bundle.keywords by BundleDelegate.String("keywords")
 	private var Bundle.repoList by BundleDelegate.List<Repo>("repoList")
+
+	private val handler = Handler(Looper.getMainLooper())
+	private var findReposRunnable = Runnable { viewModel.findRepos() }
 
 	private val viewModel by lazy {
 		ViewModelProviders.of(this, ReposViewModel.Factory(application)).get(ReposViewModel::class.java)
@@ -54,7 +61,8 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 	}
 
 	override fun onTextChange(charSequence: CharSequence, start: Int, before: Int, count: Int) {
-		viewModel.findRepos(charSequence.toString())
+		handler.removeCallbacks(findReposRunnable)
+		handler.postDelayed(findReposRunnable, FIND_REPOS_DELAY)
 	}
 
 	override fun onItemClick(): (Repo) -> Unit {
