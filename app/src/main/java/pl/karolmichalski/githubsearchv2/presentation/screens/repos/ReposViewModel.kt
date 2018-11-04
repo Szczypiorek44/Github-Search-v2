@@ -9,8 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
-import pl.karolmichalski.githubsearchv2.data.models.Repo
-import pl.karolmichalski.githubsearchv2.domain.interactors.RepoListUseCase
+import pl.karolmichalski.githubsearchv2.domain.interactors.ReposAndUsersUseCase
 import pl.karolmichalski.githubsearchv2.presentation.App
 import javax.inject.Inject
 
@@ -24,31 +23,31 @@ class ReposViewModel(app: App) : AndroidViewModel(app) {
 	}
 
 	val keywords = MutableLiveData<String>()
-	val repoList = MutableLiveData<List<Repo>>().apply { value = ArrayList() }
+	val reposAndUsers = MutableLiveData<List<Any>>().apply { value = ArrayList() }
 	val isLoading = MutableLiveData<Boolean>().apply { value = false }
 	val errorMessage = MutableLiveData<String>()
 
 	@Inject
-	lateinit var repoListUseCase: RepoListUseCase
+	lateinit var reposAndUsersUseCase: ReposAndUsersUseCase
 
 	init {
 		app.appComponent.inject(this)
 	}
 
-	fun findRepos() {
-		repoListUseCase.execute(keywords.value)
+	fun findReposAndUsers() {
+		reposAndUsersUseCase.execute(keywords.value)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.doOnSubscribe { isLoading.postValue(true) }
 				.doFinally { isLoading.postValue(false) }
 				.subscribeBy(
 						onSuccess = {
-							repoList.value = it },
+							reposAndUsers.value = it
+						},
 						onError = {
 							if (it is BlankInputException)
-								repoList.value = ArrayList()
+								reposAndUsers.value = ArrayList()
 							errorMessage.value = it.localizedMessage
 						})
 	}
-
 }

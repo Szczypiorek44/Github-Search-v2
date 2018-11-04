@@ -2,9 +2,11 @@ package pl.karolmichalski.githubsearchv2.data.repos
 
 import android.content.Context
 import io.reactivex.Single
+import io.reactivex.functions.BiFunction
 import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
 import pl.karolmichalski.githubsearchv2.data.models.Repo
+import pl.karolmichalski.githubsearchv2.data.models.User
 import pl.karolmichalski.githubsearchv2.domain.repositories.GithubRepos
 
 class GithubReposImpl(private val context: Context,
@@ -15,6 +17,23 @@ class GithubReposImpl(private val context: Context,
 			keywords.isNullOrBlank() -> Single.error(BlankInputException(context.getString(R.string.enter_keywords)))
 			else -> apiService.findRepos(keywords!!).map { it.repoList }
 		}
+	}
+
+	override fun findUsers(keywords: String?): Single<List<User>> {
+		return when {
+			keywords.isNullOrBlank() -> Single.error(BlankInputException(context.getString(R.string.enter_keywords)))
+			else -> apiService.findUsers(keywords!!).map { it.userList }
+		}
+	}
+
+	override fun findReposAndUsers(keywords: String?): Single<List<Any>> {
+		return Single.zip(findRepos(keywords), findUsers(keywords), BiFunction { repos, users ->
+			ArrayList<Any>().apply {
+				addAll(repos)
+				addAll(users)
+				shuffle()
+			}
+		})
 	}
 
 	override fun getRepoDetails(owner: String, repo: String): Single<Repo> {

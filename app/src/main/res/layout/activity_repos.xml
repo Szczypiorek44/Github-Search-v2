@@ -45,9 +45,9 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:onItemClick="@{listener.onItemClick}"
+            app:onUserClick="@{listener.onUserClick}"
             app:onScroll="@{listener.onScroll}"
-            app:repoList="@{viewModel.repoList}"
+            app:reposAndUsers="@{viewModel.reposAndUsers}"
             tools:listitem="@layout/item_repo" />
 
         <pl.karolmichalski.githubsearchv2.presentation.customviews.LoadingLayout
