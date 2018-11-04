@@ -6,14 +6,15 @@ import kotlin.reflect.KProperty
 
 sealed class IntentDelegate<T>(protected val key: kotlin.String) : ReadWriteProperty<Intent, T> {
 
-	class String(key: kotlin.String) : IntentDelegate<kotlin.String>(key) {
-		override fun setValue(thisRef: Intent, property: KProperty<*>, value: kotlin.String) {
+	class User(key: kotlin.String) : IntentDelegate<pl.karolmichalski.githubsearchv2.data.models.User>(key) {
+		override fun getValue(thisRef: Intent, property: KProperty<*>): pl.karolmichalski.githubsearchv2.data.models.User {
+			return thisRef.getParcelableExtra(key)
+		}
+
+		override fun setValue(thisRef: Intent, property: KProperty<*>, value: pl.karolmichalski.githubsearchv2.data.models.User) {
 			thisRef.putExtra(key, value)
 		}
 
-		override fun getValue(thisRef: Intent, property: KProperty<*>): kotlin.String {
-			return thisRef.getStringExtra(key)
-		}
 	}
 
 }

@@ -9,5 +9,6 @@ interface GithubRepos {
 	fun findRepos(keywords: String?): Single<List<Repo>>
 	fun findUsers(keywords: String?): Single<List<User>>
 	fun findReposAndUsers(keywords: String?): Single<List<Identified>>
+	fun getFollowersCount(followersUrl: String?): Single<String>
 	fun getRepoDetails(owner: String, repo: String): Single<Repo>
 }

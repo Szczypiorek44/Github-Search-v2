@@ -37,6 +37,10 @@ class GithubReposImpl(private val context: Context,
 		})
 	}
 
+	override fun getFollowersCount(followersUrl: String?): Single<String> {
+		return apiService.getFollowers(followersUrl).map { context.getString(R.string.followers_count, it.count()) }
+	}
+
 	override fun getRepoDetails(owner: String, repo: String): Single<Repo> {
 		return apiService.getRepoDetails(owner, repo)
 	}

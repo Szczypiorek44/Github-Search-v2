@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_details.*
 import pl.karolmichalski.githubsearchv2.R
+import pl.karolmichalski.githubsearchv2.data.models.User
 import pl.karolmichalski.githubsearchv2.databinding.ActivityDetailsBinding
 import pl.karolmichalski.githubsearchv2.presentation.dialogs.DecisionDialog
 import pl.karolmichalski.githubsearchv2.presentation.utils.IntentDelegate
@@ -17,13 +18,11 @@ import pl.karolmichalski.githubsearchv2.presentation.utils.IntentDelegate
 class DetailsActivity : AppCompatActivity() {
 
 	companion object {
-		private var Intent.owner by IntentDelegate.String("owner")
-		private var Intent.repo by IntentDelegate.String("repo")
+		private var Intent.user by IntentDelegate.User("user")
 
-		fun getIntent(context: Context, owner: String, repoName: String): Intent {
+		fun getIntent(context: Context, user: User): Intent {
 			return Intent(context, DetailsActivity::class.java).also {
-				it.owner = owner
-				it.repo = repoName
+				it.user = user
 			}
 		}
 	}
@@ -43,11 +42,11 @@ class DetailsActivity : AppCompatActivity() {
 			it.viewModel = viewModel
 		}
 		viewModel.let {
-			it.repo.observe(this, Observer { binding.invalidateAll() })
+			it.user.value = intent.user
 			it.errorMessage.observe(this, Observer { message ->
 				Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 			})
-			it.getRepoDetails(intent.owner, intent.repo)
+			it.getFollowersCount()
 		}
 		card2.setOnClickListener { showDecisionDialog() }
 	}

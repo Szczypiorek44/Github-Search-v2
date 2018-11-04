@@ -12,6 +12,7 @@ import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.models.User
 import pl.karolmichalski.githubsearchv2.data.models.base.Identified
 import pl.karolmichalski.githubsearchv2.databinding.ActivityReposBinding
+import pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsActivity
 import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
 import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
 
@@ -64,7 +65,8 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 
 	override fun onUserClick(): (User) -> Unit {
 		return { user ->
-			Toast.makeText(this, user.login, Toast.LENGTH_SHORT).show()
+			val intent = DetailsActivity.getIntent(this, user)
+			startActivity(intent)
 		}
 	}
 
