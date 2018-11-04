@@ -1,28 +1,26 @@
 package pl.karolmichalski.githubsearchv2.presentation.customviews
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ProgressBar
-
-private const val BACKGROUND_COLOR = "#33000000"
-private const val PROGRESS_BAR_SIZE = 60
+import androidx.core.content.ContextCompat
+import pl.karolmichalski.githubsearchv2.R
 
 class LoadingLayout @JvmOverloads constructor(
 		context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
 	init {
-		val progressSize = (context.resources.displayMetrics.density * PROGRESS_BAR_SIZE).toInt()
+		val progressSize = context.resources.getDimension(R.dimen.progressbar_size).toInt()
 
 		isClickable = true
 		isFocusable = true
 		visibility = View.GONE
 
-		setBackgroundColor(Color.parseColor(BACKGROUND_COLOR))
+		setBackgroundColor(ContextCompat.getColor(context, R.color.transparent20))
 
 		val progressBar = ProgressBar(context)
 		progressBar.layoutParams = LayoutParams(progressSize, progressSize, Gravity.CENTER)
