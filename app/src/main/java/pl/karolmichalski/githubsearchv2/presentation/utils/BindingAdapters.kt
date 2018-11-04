@@ -1,5 +1,6 @@
 package pl.karolmichalski.githubsearchv2.presentation.utils
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +21,13 @@ fun ImageView.setImageUrl(url: String?) {
 fun RecyclerView.onScroll(onScroll: () -> Unit) {
 	addOnScrollListener(object : RecyclerView.OnScrollListener() {
 		override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-			if (newState==1)
+			if (newState == 1)
 				onScroll()
 		}
 	})
+}
+
+@BindingAdapter("onClick")
+fun View.onClick(onClick: () -> Unit) {
+	setOnClickListener { onClick() }
 }

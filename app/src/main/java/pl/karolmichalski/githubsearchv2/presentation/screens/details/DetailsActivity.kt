@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_details.*
 import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.models.User
 import pl.karolmichalski.githubsearchv2.databinding.ActivityDetailsBinding
 import pl.karolmichalski.githubsearchv2.presentation.dialogs.DecisionDialog
 import pl.karolmichalski.githubsearchv2.presentation.utils.IntentDelegate
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity(), DetailsListener {
+
 
 	companion object {
 		private var Intent.user by IntentDelegate.User("user")
@@ -40,6 +40,7 @@ class DetailsActivity : AppCompatActivity() {
 		binding.let {
 			it.setLifecycleOwner(this)
 			it.viewModel = viewModel
+			it.listener = this
 		}
 		viewModel.let {
 			it.user.value = intent.user
@@ -48,7 +49,10 @@ class DetailsActivity : AppCompatActivity() {
 			})
 			it.getFollowersCount()
 		}
-		card2.setOnClickListener { showDecisionDialog() }
+	}
+
+	override fun onCardClick(): () -> Unit {
+		return { showDecisionDialog() }
 	}
 
 	private fun showDecisionDialog() {
