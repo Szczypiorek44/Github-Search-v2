@@ -1,6 +1,5 @@
 package pl.karolmichalski.githubsearchv2.presentation.screens.repos
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -13,8 +12,6 @@ import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.models.Repo
 import pl.karolmichalski.githubsearchv2.databinding.ActivityReposBinding
 import pl.karolmichalski.githubsearchv2.presentation.screens.details.DetailsActivity
-import pl.karolmichalski.githubsearchv2.presentation.screens.details.owner
-import pl.karolmichalski.githubsearchv2.presentation.screens.details.repo
 import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
 import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
 
@@ -66,11 +63,8 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 	}
 
 	override fun onItemClick(): (Repo) -> Unit {
-		return {
-			val intent = Intent(this, DetailsActivity::class.java).apply {
-				owner = it.owner.login
-				repo = it.name
-			}
+		return { repo ->
+			val intent = DetailsActivity.getIntent(this, repo.owner.login, repo.name)
 			startActivity(intent)
 		}
 	}

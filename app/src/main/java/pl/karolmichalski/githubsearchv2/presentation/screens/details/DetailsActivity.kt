@@ -1,5 +1,6 @@
 package pl.karolmichalski.githubsearchv2.presentation.screens.details
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -13,10 +14,19 @@ import pl.karolmichalski.githubsearchv2.databinding.ActivityDetailsBinding
 import pl.karolmichalski.githubsearchv2.presentation.dialogs.DecisionDialog
 import pl.karolmichalski.githubsearchv2.presentation.utils.IntentDelegate
 
-var Intent.owner by IntentDelegate.String("owner")
-var Intent.repo by IntentDelegate.String("repo")
-
 class DetailsActivity : AppCompatActivity() {
+
+	companion object {
+		private var Intent.owner by IntentDelegate.String("owner")
+		private var Intent.repo by IntentDelegate.String("repo")
+
+		fun getIntent(context: Context, owner: String, repoName: String): Intent {
+			return Intent(context, DetailsActivity::class.java).also {
+				it.owner = owner
+				it.repo = repoName
+			}
+		}
+	}
 
 	private val viewModel by lazy {
 		ViewModelProviders.of(this, DetailsViewModel.Factory(application)).get(DetailsViewModel::class.java)
