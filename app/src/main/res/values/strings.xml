@@ -3,7 +3,7 @@
     <string name="enter_keywords">Enter keywords</string>
     <string name="search">Search</string>
     <string name="choose_what_you_want_to_do">Choose what you want to do</string>
-    <string name="are_you_ready_for_some_magic_question">Are you ready for some magic?</string>
+    <string name="are_you_ready_for_nothing_question">Are you ready for nothing?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="followers_count">Followers count: %d</string>

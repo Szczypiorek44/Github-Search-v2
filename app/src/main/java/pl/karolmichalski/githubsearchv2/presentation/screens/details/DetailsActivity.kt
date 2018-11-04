@@ -53,16 +53,12 @@ class DetailsActivity : AppCompatActivity() {
 
 	private fun showDecisionDialog() {
 		DecisionDialog.newInstance(
-				title = getString(R.string.are_you_ready_for_some_magic_question),
+				title = getString(R.string.are_you_ready_for_nothing_question),
 				button1text = getString(R.string.yes),
 				button2text = getString(R.string.no))
 				.apply {
-					onButton1Click = {
-						dismiss()
-					}
-					onButton2Click = {
-						dismiss()
-					}
+					onButton1Click = { dismiss() }
+					onButton2Click = { dismiss() }
 				}
 				.show(supportFragmentManager, DecisionDialog::class.java.simpleName)
 	}
