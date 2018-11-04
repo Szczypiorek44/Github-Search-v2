@@ -34,10 +34,10 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		DataBindingUtil.setContentView<ActivityReposBinding>(this, R.layout.activity_repos).apply {
-			setLifecycleOwner(this@ReposActivity)
-			viewModel = this@ReposActivity.viewModel
-			listener = this@ReposActivity
+		DataBindingUtil.setContentView<ActivityReposBinding>(this, R.layout.activity_repos).let {
+			it.setLifecycleOwner(this)
+			it.viewModel = viewModel
+			it.listener = this
 		}
 		viewModel.errorMessage.observe(this, Observer {
 			Toast.makeText(this, it, Toast.LENGTH_SHORT).show()

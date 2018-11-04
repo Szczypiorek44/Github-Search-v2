@@ -28,34 +28,32 @@ class DetailsActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		binding.apply {
-			setLifecycleOwner(this@DetailsActivity)
-			viewModel = this@DetailsActivity.viewModel
+		binding.let {
+			it.setLifecycleOwner(this)
+			it.viewModel = viewModel
 		}
-		viewModel.apply {
-			repo.observe(this@DetailsActivity, Observer { binding.invalidateAll() })
-			errorMessage.observe(this@DetailsActivity, Observer {
-				Toast.makeText(this@DetailsActivity, it, Toast.LENGTH_SHORT).show()
+		viewModel.let {
+			it.repo.observe(this, Observer { binding.invalidateAll() })
+			it.errorMessage.observe(this, Observer { message ->
+				Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 			})
-			getRepoDetails(intent.owner, intent.repo)
+			it.getRepoDetails(intent.owner, intent.repo)
 		}
-		card2.setOnClickListener {
-			showDecisionDialog()
-		}
+		card2.setOnClickListener { showDecisionDialog() }
 	}
 
 	private fun showDecisionDialog() {
-		DecisionDialog().apply {
-			title = this@DetailsActivity.getString(R.string.are_you_ready_for_some_magic_question)
-			button1text = this@DetailsActivity.getString(R.string.yes)
-			button2text = this@DetailsActivity.getString(R.string.no)
-			onButton1Click = {
-				dismiss()
+		DecisionDialog().also {
+			it.title = getString(R.string.are_you_ready_for_some_magic_question)
+			it.button1text = getString(R.string.yes)
+			it.button2text = getString(R.string.no)
+			it.onButton1Click = {
+				it.dismiss()
 			}
-			onButton2Click = {
-				dismiss()
+			it.onButton2Click = {
+				it.dismiss()
 			}
-			show(supportFragmentManager, DecisionDialog::class.java.simpleName)
-		}
+
+		}.show(supportFragmentManager, DecisionDialog::class.java.simpleName)
 	}
 }
