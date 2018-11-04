@@ -6,7 +6,7 @@ import pl.karolmichalski.githubsearchv2.presentation.screens.repos.ReposViewMode
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ReposModule::class, UseCasesModule::class, SchedulersModule::class])
+@Component(modules = [ReposModule::class, UseCasesModule::class])
 interface AppComponent {
 	fun inject(reposViewModel: ReposViewModel)
 	fun inject(detailsViewModel: DetailsViewModel)
