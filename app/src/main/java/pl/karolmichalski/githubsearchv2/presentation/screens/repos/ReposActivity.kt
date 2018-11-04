@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.models.User
+import pl.karolmichalski.githubsearchv2.data.models.base.Identified
 import pl.karolmichalski.githubsearchv2.databinding.ActivityReposBinding
 import pl.karolmichalski.githubsearchv2.presentation.utils.BundleDelegate
 import pl.karolmichalski.githubsearchv2.presentation.utils.hideSoftKeyboard
@@ -19,7 +20,7 @@ private const val FIND_REPOS_DELAY = 500L
 class ReposActivity : AppCompatActivity(), ReposListener {
 
 	private var Bundle.keywords by BundleDelegate.String("keywords")
-//	private var Bundle.repoList by BundleDelegate.List<Any>("reposAndUsers")
+	private var Bundle.repoList by BundleDelegate.List<Identified>("reposAndUsers")
 
 	private val handler = Handler(Looper.getMainLooper())
 	private var findReposRunnable = Runnable { viewModel.findReposAndUsers() }
@@ -45,15 +46,15 @@ class ReposActivity : AppCompatActivity(), ReposListener {
 		viewModel.keywords.value?.let { keywords ->
 			outState?.keywords = keywords
 		}
-//		viewModel.reposAndUsers.value?.let { repoList ->
-//			outState?.repoList = repoList
-//		}
+		viewModel.reposAndUsers.value?.let { repoList ->
+			outState?.repoList = repoList
+		}
 	}
 
 	override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
 		super.onRestoreInstanceState(savedInstanceState)
 		viewModel.keywords.value = savedInstanceState?.keywords
-//		viewModel.reposAndUsers.value = savedInstanceState?.repoList
+		viewModel.reposAndUsers.value = savedInstanceState?.repoList
 	}
 
 	override fun onTextChange(charSequence: CharSequence, start: Int, before: Int, count: Int) {

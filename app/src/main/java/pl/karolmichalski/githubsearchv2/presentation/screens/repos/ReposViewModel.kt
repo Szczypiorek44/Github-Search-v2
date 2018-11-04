@@ -9,6 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
+import pl.karolmichalski.githubsearchv2.data.models.base.Identified
 import pl.karolmichalski.githubsearchv2.domain.interactors.ReposAndUsersUseCase
 import pl.karolmichalski.githubsearchv2.presentation.App
 import javax.inject.Inject
@@ -23,7 +24,7 @@ class ReposViewModel(app: App) : AndroidViewModel(app) {
 	}
 
 	val keywords = MutableLiveData<String>()
-	val reposAndUsers = MutableLiveData<List<Any>>().apply { value = ArrayList() }
+	val reposAndUsers = MutableLiveData<List<Identified>>().apply { value = ArrayList() }
 	val isLoading = MutableLiveData<Boolean>().apply { value = false }
 	val errorMessage = MutableLiveData<String>()
 

@@ -10,38 +10,34 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.models.Repo
 import pl.karolmichalski.githubsearchv2.data.models.User
+import pl.karolmichalski.githubsearchv2.data.models.base.Identified
 import pl.karolmichalski.githubsearchv2.presentation.screens.repos.viewholders.RepoViewHolder
 import pl.karolmichalski.githubsearchv2.presentation.screens.repos.viewholders.UserViewHolder
 
 @BindingAdapter("reposAndUsers", "onUserClick")
-fun RecyclerView.setReposAndUsers(repoList: List<Any>, onUserClick: (User) -> Unit) {
+fun RecyclerView.setReposAndUsers(reposAndUsers: List<Identified>, onUserClick: (User) -> Unit) {
 	if (adapter == null)
 		adapter = RepoAdapter(onUserClick)
-	(adapter as RepoAdapter).submitList(repoList)
+	(adapter as RepoAdapter).submitList(reposAndUsers)
 }
 
-class RepoAdapter(private val onItemClick: (User) -> Unit) : ListAdapter<Any, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
+class RepoAdapter(private val onItemClick: (User) -> Unit) : ListAdapter<Identified, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
 
 	private companion object {
 		const val TYPE_REPO = 1
 		const val TYPE_USER = 0
 
-		private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Any>() {
-			override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-				return if (oldItem is Repo && newItem is Repo)
-					oldItem.id == newItem.id
-				else if (oldItem is User && newItem is User)
-					oldItem.id == newItem.id
-				else false
+		private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Identified>() {
+			override fun areItemsTheSame(oldItem: Identified, newItem: Identified): Boolean {
+				return oldItem.id == newItem.id
 			}
 
-			override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-				return if (oldItem is Repo && newItem is Repo)
-					oldItem.name == newItem.name
-				else if (oldItem is User && newItem is User)
-					oldItem.login == newItem.login
-				else false
-//				return oldItem.name == newItem.name && oldItem.fullName == newItem.fullName
+			override fun areContentsTheSame(oldItem: Identified, newItem: Identified): Boolean {
+				return when {
+					oldItem is Repo && newItem is Repo -> oldItem.name == newItem.name
+					oldItem is User && newItem is User -> oldItem.login == newItem.login
+					else -> false
+				}
 			}
 		}
 	}

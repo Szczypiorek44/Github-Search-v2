@@ -7,6 +7,7 @@ import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
 import pl.karolmichalski.githubsearchv2.data.models.Repo
 import pl.karolmichalski.githubsearchv2.data.models.User
+import pl.karolmichalski.githubsearchv2.data.models.base.Identified
 import pl.karolmichalski.githubsearchv2.domain.repositories.GithubRepos
 
 class GithubReposImpl(private val context: Context,
@@ -26,12 +27,12 @@ class GithubReposImpl(private val context: Context,
 		}
 	}
 
-	override fun findReposAndUsers(keywords: String?): Single<List<Any>> {
+	override fun findReposAndUsers(keywords: String?): Single<List<Identified>> {
 		return Single.zip(findRepos(keywords), findUsers(keywords), BiFunction { repos, users ->
-			ArrayList<Any>().apply {
+			ArrayList<Identified>().apply {
 				addAll(repos)
 				addAll(users)
-				shuffle()
+				sortBy { it.id }
 			}
 		})
 	}
@@ -39,5 +40,6 @@ class GithubReposImpl(private val context: Context,
 	override fun getRepoDetails(owner: String, repo: String): Single<Repo> {
 		return apiService.getRepoDetails(owner, repo)
 	}
+
 
 }
