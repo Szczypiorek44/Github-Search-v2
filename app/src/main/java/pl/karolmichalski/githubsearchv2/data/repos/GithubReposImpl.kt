@@ -2,7 +2,7 @@ package pl.karolmichalski.githubsearchv2.data.repos
 
 import android.content.Context
 import io.reactivex.Single
-import io.reactivex.functions.BiFunction
+import io.reactivex.rxkotlin.Singles
 import pl.karolmichalski.githubsearchv2.R
 import pl.karolmichalski.githubsearchv2.data.exceptions.BlankInputException
 import pl.karolmichalski.githubsearchv2.data.models.Repo
@@ -28,13 +28,14 @@ class GithubReposImpl(private val context: Context,
 	}
 
 	override fun findReposAndUsers(keywords: String?): Single<List<Identified>> {
-		return Single.zip(findRepos(keywords), findUsers(keywords), BiFunction { repos, users ->
+		return Singles.zip(findRepos(keywords), findUsers(keywords))
+		{ repos, users ->
 			ArrayList<Identified>().apply {
 				addAll(repos)
 				addAll(users)
 				sortBy { it.id }
 			}
-		})
+		}
 	}
 
 	override fun getFollowersCount(followersUrl: String?): Single<String> {
